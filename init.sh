@@ -5,20 +5,18 @@ DIRSCRIPT=$(cd $(dirname $0) && pwd)
 DEST_HELPER_DIR='.helpers'
 
 #remotes
-REMOTE_BUNDLE_DIR='bash_helpers'
+REMOTE_BUNDLE_DIR='https://raw.githubusercontent.com/spacecoding42/bash-helpers/master'
 REMOTE_DIR_DIST=$REMOTE_BUNDLE_DIR/'.helpers'
-REMOTE_DIR_LOCAL=$REMOTE_BUNDLE_DIR/'local'
 FILE_BUNDLE='bash_helpers_bundle.sh'
 FILE_LOCAL='local_aliases.sh'
-
 
 
 #create .helpers dir in user bash_profile
 cd ~ && mkdir $DEST_HELPER_DIR
 
 #copy files
-cp $REMOTE_DIR_DIST/$FILE_BUNDLE $DEST_HELPER_DIR/000-$FILE_BUNDLE
-cp -n $REMOTE_DIR_LOCAL/$FILE_LOCAL $DEST_HELPER_DIR
+wget -P $DEST_HELPER_DIR $REMOTE_DIR_DIST/$FILE_BUNDLE
+wget -P $DEST_HELPER_DIR $REMOTE_DIR_DIST/$FILE_LOCAL
 
 #remove init file
 rm -fr $DIRSCRIPT/init.sh
