@@ -1,0 +1,11 @@
+[color]
+	diff = true
+	status = true
+	branch = true
+	interactive = true
+	ui = true
+[user]
+	email = mail@domain.com
+	name = USER_NAME
+[core]
+	filemode = false

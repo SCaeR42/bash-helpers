@@ -1,0 +1,56 @@
+#----------------------------------------------------------------------------
+# ~/.screenrc: executed by screen for user settings $Revision: 2.10 (CentOS Edition by Wakko Warner) $ $Comment: Any comments please send to 
+#wakko@acmelabs.spb.ru $ ----------------------------------------------------------------------------
+  hardstatus string "[screen %n%?: %t%?] %h"
+  defshell -bash
+  shell -$SHELL
+# VARIABLES =============================================================== Automatically detach on hangup.
+  autodetach on # default: on
+# Don't display the copyright page
+  startup_message off # default: on
+# Affects the copying of text regions
+  crlf off # default: off
+# Change default scrollback value for new windows
+  defscrollback 1000 # default: 100
+# Define the time that all windows monitored for silence should wait before displaying a message. Default 30 seconds.
+  silencewait 15 # default: 30
+# UTF-8 support
+  defutf8 on
+# PuTTY tweaks
+  termcapinfo xterm* ti@:te@
+  termcapinfo xterm ti@:te@
+# KEYBINDINGS
+# ==============================================================
+# Alt+Fn keys.
+  bindkey "^[^[OC" next
+  bindkey "^[^[OD" prev
+  bindkey "^[^[OP" select 0
+  bindkey "^[^[OQ" select 1
+  bindkey "^[^[OR" select 2
+  bindkey "^[^[OS" select 3
+  bindkey "^[^[[15~" select 4
+  bindkey "^[^[[17~" select 5
+  bindkey "^[^[[18~" select 6
+  bindkey "^[^[[19~" select 7
+  bindkey "^[^[[20~" select 8
+  bindkey "^[^[[21~" select 9
+# STARTUP SCREENS
+# ===============================================================
+# Uncomment one/some following lines to automatically let
+# SCREEN start some programs in the given window numbers:
+# screen -t IRC         1 irssi
+# screen -t EDIT        1 vim
+# screen -t GOOGLE      2 links http://www.google.com
+# screen -t NEWS        3 slrn
+# screen -t WWW         4 links http://rt.com
+  screen -t F1 0
+  screen -t F2 1
+  screen -t F3 2
+  screen -t F4 3
+  screen -t F5 4
+  screen -t F6 5
+  screen -t F7 6
+  screen -t F8 7
+  screen -t F9 8
+  screen -t F10 9
+  select 0
