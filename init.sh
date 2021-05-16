@@ -16,7 +16,11 @@ cd ~ && mkdir $DEST_HELPER_DIR
 
 #copy files
 wget $REMOTE_DIR_DIST/$FILE_BUNDLE -O ~/$DEST_HELPER_DIR/000-$FILE_BUNDLE
-wget $REMOTE_DIR_DIST/$FILE_LOCAL -O ~/$DEST_HELPER_DIR/$FILE_LOCAL
+
+#get file if not exist
+if [ ! -f ~/$DEST_HELPER_DIR/$FILE_LOCAL ]; then
+    wget $REMOTE_DIR_DIST/$FILE_LOCAL -O ~/$DEST_HELPER_DIR/$FILE_LOCAL
+fi
 
 #remove init file
 rm -fr $DIRSCRIPT/init.sh

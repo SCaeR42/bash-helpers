@@ -4,7 +4,7 @@
 - dotfiles - configs
 - helpers - support heplers and aliases
 - local alias
-- enable veriants auto/manual
+- enable variants auto/manual
 - builder all helpers to bundle file
 
 ## Enable All-In-One file
@@ -70,6 +70,7 @@ done
 ````bash
 bash build.sh
 ````
+This command combine all files in helpers directory to one bundle file
 
 ## Temporarily enable all helpers only on current session
 ````bash

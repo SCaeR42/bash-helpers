@@ -5,6 +5,6 @@
 #alias dev='cd devSitePath'
 alias prod='cd /var/www/html/'
 
-alias bh='echo "
+alias ?='echo "
 prod 	- 	cd /var/www/html/
 "'
