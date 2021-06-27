@@ -14,7 +14,7 @@ wget -P ~ 'https://raw.githubusercontent.com/spacecoding42/bash-helpers/master/i
 ````
 
 ### Manual enable
-Copy `.helpers` folder to profile
+Copy `.helpers` folder to profile and add to .bash_profile
 
 ````bash
 # If not running interactively, don't do anything
@@ -33,6 +33,7 @@ done
 
 ## Enable all files RAW
 ### Manual enable
+add to .bash_profile
 ````bash
 if [ -f ~/bash_helpers/helpers/.bash_helpers.sh ]; then
 	. ~/bash_helpers/helpers/.bash_helpers.sh
