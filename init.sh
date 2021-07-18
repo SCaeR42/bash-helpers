@@ -23,11 +23,15 @@ esac
 shift
 done
 
-./build.sh
+chmod 777 ./build.sh;
+./build.sh;
 
 if [ "$VARIANT_ADD" == "LITE" ]; then
-source $DIRSCRIPT/$DEST_HELPER_DIR/$FILE_BUNDLE
-source $DIRSCRIPT/$DEST_HELPER_DIR/$FILE_LOCAL
+source $DIRSCRIPT/$DEST_HELPER_DIR/$FILE_BUNDLE;
+source $DIRSCRIPT/$DEST_HELPER_DIR/$FILE_LOCAL;
+
+echo 'source ' $DIRSCRIPT/$DEST_HELPER_DIR/$FILE_BUNDLE
+echo 'source ' $DIRSCRIPT/$DEST_HELPER_DIR/$FILE_LOCAL
 
 exit;
 fi
