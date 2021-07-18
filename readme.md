@@ -10,7 +10,7 @@
 ## Enable All-In-One file
 ### Automatic enable
 ````bash
-wget -P ~ 'https://raw.githubusercontent.com/spacecoding42/bash-helpers/master/init.sh' -O ~/init.sh && bash init.sh
+git clone https://github.com/SpaceCoding42/bash-helpers.git && cd ./bash-helpers && chmod 777 ./init.sh && ./init.sh && rm -fr ../bash-helpers
 ````
 
 ### Manual enable
@@ -75,7 +75,7 @@ This command combine all files in helpers directory to one bundle file
 
 ## Temporarily enable all helpers only on current session
 ````bash
-wget -P ~ 'https://raw.githubusercontent.com/spacecoding42/bash-helpers/master/.helpers/bash_helpers_bundle.sh' -O ~/.bash_helpers_bundle && . ~/.bash_helpers_bundle && rm -f ~/.bash_helpers_bundle
+git clone https://github.com/SpaceCoding42/bash-helpers.git && cd ./bash-helpers && chmod 777 ./init.sh && ./init.sh -lite && rm -fr ../bash-helpers
 ````
 
 

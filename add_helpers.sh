@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 ## current dir
 DIRSCRIPT=$(cd $(dirname $0) && pwd)

@@ -21,20 +21,9 @@ zip.lst - список директорий для обработки
 Создание backup каждый понедельник
 ````bash
 # files backup (diff)
-30 01 * * 1 /usr/bin/zip -r -9 -q "/home/USER_DIR/backups/www-`date "+\%Y-\%m"` files.zip" -x *.git* -x *cache* -x *tmp* -x *log* -DF --out "/home/USER_DIR/backups/www-`date "+\%Y-\%m-\%d"` files diff.zip" -@ < zip_lst.txt
+30 01 * * 1 /usr/bin/zip -r -9 -q "/home/USER_DIR/backups/www-`date "+\%Y-\%m"` files.zip" -x *.git* -x *cache* -x *tmp* -x *log* -DF --out "/home/USER_DIR/backups/www-`date "+\%Y-\%m-\%d"` files diff.zip" -@ < zip.lst
 ````
 
-zip_lst.txt - содержит список директорий для резервирования, по одной на каждой строке
-```txt
-/var/www
-/home
-/root
-```
-
-# Deleted old files
-````bash
-find /backup -type f -mtime +45 -name 'www-* files.zip' -type f -delete
-````
 
 # Transfer to cloud
 ## FTP

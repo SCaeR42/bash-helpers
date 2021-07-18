@@ -1,16 +1,17 @@
-#!/bin/sh
+#!/bin/bash
 
 #base settings
 ## current dir
 DIRSCRIPT=$(cd $(dirname $0) && pwd)
-DIR_DIST='.helpers'
+DEST_HELPER_DIR='.helpers'
 FILE_BUNDLE='bash_helpers_bundle.sh'
-FILE_BUNDLE_PATCH=$DIRSCRIPT/$DIR_DIST/$FILE_BUNDLE
+FILE_BUNDLE_PATCH=$DIRSCRIPT/$DEST_HELPER_DIR/$FILE_BUNDLE
+FILE_LOCAL='local_aliases.sh'
 
 #created bundle dir
-if [ ! -d $DIRSCRIPT/$DIR_DIST ]; then
-    mkdir $DIRSCRIPT/$DIR_DIST
-    echo 'Created dir: ' $DIRSCRIPT/$DIR_DIST;
+if [ ! -d $DIRSCRIPT/$DEST_HELPER_DIR ]; then
+    mkdir $DIRSCRIPT/$DEST_HELPER_DIR
+    echo 'Created dir: ' $DIRSCRIPT/$DEST_HELPER_DIR;
 fi
 
 #created bundle file
@@ -40,5 +41,6 @@ for dir in $DIRSCRIPT/helpers/* ; do
 done
 echo 'End combine helpers';
 
-cp local/local_aliases.sh $DIR_DIST
+cp local/$FILE_LOCAL $DEST_HELPER_DIR
+
 
