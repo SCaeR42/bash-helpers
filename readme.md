@@ -75,7 +75,7 @@ This command combine all files in helpers directory to one bundle file
 
 ## Temporarily enable all helpers only on current session
 ````bash
-git clone https://github.com/SpaceCoding42/bash-helpers.git && cd ./bash-helpers && chmod 777 ./init.sh && ./init.sh -lite && rm -fr ../bash-helpers
+git clone https://github.com/SpaceCoding42/bash-helpers.git && cd ./bash-helpers && chmod 777 ./init.sh && ./init.sh -lite && . ./.helpers/bash_helpers_bundle.sh && . ./.helpers/local_aliases.sh && rm -fr ../bash-helpers && cd ~/
 ````
 
 
