@@ -10,11 +10,20 @@
 ## Enable All-In-One file
 ### Automatic enable
 ````bash
-wget -P ~ 'https://raw.githubusercontent.com/spacecoding42/bash-helpers/master/init.sh' -O ~/init.sh && bash init.sh
+git clone https://github.com/SpaceCoding42/bash-helpers.git && cd ./bash-helpers && chmod 777 ./init.sh && ./init.sh && rm -fr ../bash-helpers
 ````
 
+####
+option init.sh `-dotfiles` added dotfiles to `~/.dotfiles/` and create symlinks for root user
+
+### Automatic enable whis dotfiles
+````bash
+git clone https://github.com/SpaceCoding42/bash-helpers.git && cd ./bash-helpers && chmod 777 ./init.sh && ./init.sh -dotfiles && rm -fr ../bash-helpers
+````
+
+
 ### Manual enable
-Copy `.helpers` folder to profile
+Copy `.helpers` folder to profile and add to .bash_profile
 
 ````bash
 # If not running interactively, don't do anything
@@ -33,6 +42,7 @@ done
 
 ## Enable all files RAW
 ### Manual enable
+add to .bash_profile
 ````bash
 if [ -f ~/bash_helpers/helpers/.bash_helpers.sh ]; then
 	. ~/bash_helpers/helpers/.bash_helpers.sh
@@ -74,7 +84,7 @@ This command combine all files in helpers directory to one bundle file
 
 ## Temporarily enable all helpers only on current session
 ````bash
-wget -P ~ 'https://raw.githubusercontent.com/spacecoding42/bash-helpers/master/.helpers/bash_helpers_bundle.sh' -O ~/.bash_helpers_bundle && . ~/.bash_helpers_bundle && rm -f ~/.bash_helpers_bundle
+git clone https://github.com/SpaceCoding42/bash-helpers.git && cd ./bash-helpers && chmod 777 ./init.sh && ./init.sh -lite && . ./.helpers/bash_helpers_bundle.sh && . ./.helpers/local_aliases.sh && rm -fr ../bash-helpers && cd ~/
 ````
 
 

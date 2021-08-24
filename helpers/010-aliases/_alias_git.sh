@@ -14,6 +14,7 @@ alias gu='git config user.name; git config user.email'
 alias gl='git log'
 alias gpush='git push'
 alias gpull='git pull'
+alias gr='git remote'
 
 alias gi='echo "
 gb		-	git branch
@@ -28,5 +29,6 @@ gcm		-	git commit --amend
 gu		-	git config user.name; git config user.email
 gl		-	git log
 gpush		-	git push
-gpull		-	git pull"
+gpull		-	git pull
+gr		-	git remote"
 '

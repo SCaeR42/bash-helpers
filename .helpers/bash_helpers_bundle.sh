@@ -118,6 +118,9 @@ _On_IWhite='\e[0;107m'   # White
 # export
 export PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 
+# colorize ls
+LS_COLORS=$LS_COLORS:'di=1;34:ow=34;42;41:';export LS_COLORS
+export LS_COLORS
 
 # SSH
 export SSH="$HOME/.ssh"
@@ -240,6 +243,18 @@ function ii() { # Дополнительные сведения о систем�
     systemctl status php-fpm | grep Active | sed "s/Active:/${_Green}Php-fpm:${_Norm}/"
 }
 
+
+function lsColors() {
+    eval $(echo "no:global default;fi:normal file;di:directory;ln:symbolic link;pi:named pipe;so:socket;do:door;bd:block device;cd:character device;or:orphan symlink;mi:missing file;su:set uid;sg:set gid;tw:sticky other writable;ow:other writable;st:sticky;ex:executable;"|sed -e 's/:/="/g; s/\;/"\n/g')
+    {
+        IFS=:
+        for i in $LS_COLORS
+        do
+            echo -e "\e[${i#*=}m$( x=${i%=*}; [ "${!x}" ] && echo "${!x}" || echo "$x" )\e[m"
+        done
+    }
+}
+
 function scmenu() {
     option=0
     until [ "$option" = "4" ]; do
@@ -359,6 +374,7 @@ alias gu='git config user.name; git config user.email'
 alias gl='git log'
 alias gpush='git push'
 alias gpull='git pull'
+alias gr='git remote'
 
 alias gi='echo "
 gb		-	git branch
@@ -373,7 +389,8 @@ gcm		-	git commit --amend
 gu		-	git config user.name; git config user.email
 gl		-	git log
 gpush		-	git push
-gpull		-	git pull"
+gpull		-	git pull
+gr		-	git remote"
 '
 
 #!/bin/bash
