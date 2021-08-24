@@ -14,6 +14,9 @@ FILE_LOCAL='local_aliases.sh'
 VARIANT_ADD='FULL'
 ADD_DOTFILES=false
 
+. $DIRSCRIPT/helpers/000-main/_colors.sh
+. $DIRSCRIPT/helpers/000-main/_functions.sh
+
 while [ -n "$1" ]
 do
 case "$1" in
@@ -48,7 +51,7 @@ if [ "$ADD_DOTFILES" == true ]; then
         	if [ -f $script ] ; then
         		scriptName=$(basename $script)
         		ln -s --backup='t' ~/$DEST_DOTFILES_DIR/$scriptName ~/$scriptName
-        		_info "${_Cyan}create simlink: ${_Yellow}$scriptName";
+        		_success "create simlink: $scriptName";
         	fi
         done
 
