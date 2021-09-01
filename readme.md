@@ -26,6 +26,8 @@ git clone https://github.com/SpaceCoding42/bash-helpers.git && cd ./bash-helpers
 Copy `.helpers` folder to profile and add to .bash_profile
 
 ````bash
+##### BASH HELPERS #####
+bhlp() {
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -37,6 +39,10 @@ for script in ~/.helpers/*.sh ; do
         . $script
     fi
 done
+}
+
+alias ??='bhlp'
+??
 ````
 
 

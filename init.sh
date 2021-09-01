@@ -129,6 +129,7 @@ echo ".helpers found in .bash_profile file";
 else
 cat >> ~/.bash_profile << \EOF
 ##### BASH HELPERS #####
+bhlp() {
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -140,6 +141,10 @@ for script in ~/.helpers/*.sh ; do
         . $script
     fi
 done
+}
+
+alias ??='bhlp'
+??
 
 EOF
 echo ".bash_helpers added to .bash_profile file";
