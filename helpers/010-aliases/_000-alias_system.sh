@@ -38,6 +38,7 @@ alias tree='tree -Csu'          # альтернатива 'ls'
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
+alias grept='grep -rl'
 
 # Reload the shell (i.e. invoke as a login shell)
 alias reload="exec ${SHELL} -l"
@@ -54,7 +55,7 @@ alias yumi='yum install -y'
 #systemctl
 alias ss='systemctl status'
 alias sr='systemctl restart'
-alias str='systemctl start'
+alias sstt='systemctl start'
 alias sst='systemctl stop'
 alias se='systemctl enable'
 alias sd='systemctl disable'

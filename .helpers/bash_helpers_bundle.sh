@@ -119,8 +119,7 @@ _On_IWhite='\e[0;107m'   # White
 export PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 
 # colorize ls
-LS_COLORS=$LS_COLORS:'di=1;34:ow=34;42;41:';export LS_COLORS
-export LS_COLORS
+LS_COLORS=$LS_COLORS:'di=1;34:ow=34;42;0:';export LS_COLORS
 
 # SSH
 export SSH="$HOME/.ssh"
@@ -335,6 +334,7 @@ alias tree='tree -Csu'          # альтернатива 'ls'
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
+alias grept='grep -rl'
 
 # Reload the shell (i.e. invoke as a login shell)
 alias reload="exec ${SHELL} -l"
@@ -351,11 +351,17 @@ alias yumi='yum install -y'
 #systemctl
 alias ss='systemctl status'
 alias sr='systemctl restart'
-alias str='systemctl start'
+alias sstt='systemctl start'
 alias sst='systemctl stop'
 alias se='systemctl enable'
 alias sd='systemctl disable'
 
+
+
+#!/bin/bash
+
+#bitrix VM
+alias bx='~/menu.sh'
 
 
 #!/bin/bash
