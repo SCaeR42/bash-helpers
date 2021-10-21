@@ -10,7 +10,7 @@
 ## Enable All-In-One file
 ### Automatic enable
 ````bash
-git clone https://github.com/SpaceCoding42/bash-helpers.git && cd ./bash-helpers && chmod 777 ./init.sh && ./init.sh && rm -fr ../bash-helpers
+git clone https://github.com/SCaeR42/bash-helpers.git && cd ./bash-helpers && chmod 777 ./init.sh && ./init.sh && rm -fr ../bash-helpers
 ````
 
 ####
@@ -18,7 +18,7 @@ option init.sh `-dotfiles` added dotfiles to `~/.dotfiles/` and create symlinks 
 
 ### Automatic enable whis dotfiles
 ````bash
-git clone https://github.com/SpaceCoding42/bash-helpers.git && cd ./bash-helpers && chmod 777 ./init.sh && ./init.sh -dotfiles && rm -fr ../bash-helpers
+git clone https://github.com/SCaeR42/bash-helpers.git && cd ./bash-helpers && chmod 777 ./init.sh && ./init.sh -dotfiles && rm -fr ../bash-helpers
 ````
 
 
@@ -90,7 +90,7 @@ This command combine all files in helpers directory to one bundle file
 
 ## Temporarily enable all helpers only on current session
 ````bash
-git clone https://github.com/SpaceCoding42/bash-helpers.git && cd ./bash-helpers && chmod 777 ./init.sh && ./init.sh -lite && . ./.helpers/bash_helpers_bundle.sh && . ./.helpers/local_aliases.sh && rm -fr ../bash-helpers && cd ~/
+git clone https://github.com/SCaeR42/bash-helpers.git && cd ./bash-helpers && chmod 777 ./init.sh && ./init.sh -lite && . ./.helpers/bash_helpers_bundle.sh && . ./.helpers/local_aliases.sh && rm -fr ../bash-helpers && cd ~/
 ````
 
 
