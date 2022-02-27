@@ -15,6 +15,7 @@ alias gl='git log'
 alias gpush='git push'
 alias gpull='git pull'
 alias gr='git remote'
+alias gll="git log --graph --pretty=format:'%Cred%h%Creset -%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative -30"
 
 alias gi='echo "
 gb		-	git branch
@@ -29,6 +30,31 @@ gcm		-	git commit --amend
 gu		-	git config user.name; git config user.email
 gl		-	git log
 gpush		-	git push
+gpushnew		-	git push --set-upstream origin
 gpull		-	git pull
 gr		-	git remote"
+gll		-	git log graph + colored last 30"
 '
+
+# Получение новой удалённой ветки с доп. действиями
+function gpullB {
+    git checkout -b $newBranchName origin/$newBranchName
+    #
+
+    if [ $# -eq 0 ] || [ $# -gt 2 ]
+    then
+        read -p "Enter a branch name: " newBranchName
+    else
+        newBranchName=$1
+    fi
+
+    echo "Getting new branch" $value
+    # git checkout -b $newBranchName origin/$newBranchName
+    git branch
+
+    if [ "$2" == "-u" ]
+    then
+#         cd local/templates/.default/js/app
+#         $(runb)
+    fi
+}
