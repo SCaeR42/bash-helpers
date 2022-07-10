@@ -32,7 +32,7 @@ alias lu='ls -lur'              # сортировка по времени по�
 alias lr='ls -lR'               # рекурсивный обход подкаталогов
 alias lt='ls -ltr'              # сортировка по дате
 alias lm='ls -al |more'         # вывод через 'more'
-alias tree='tree -Csu'          # альтернатива 'ls'
+alias tree='tree -C'          # альтернатива 'ls'
 
 ## Colorize the grep command output for ease of use (good for log files)##
 alias grep='grep --color=auto'

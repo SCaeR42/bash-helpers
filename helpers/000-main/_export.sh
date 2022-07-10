@@ -10,3 +10,6 @@ export SSH="$HOME/.ssh"
 
 export EDITOR=nano
 
+# маны на русском
+export MANOPT="-L ru"
+
