@@ -54,17 +54,13 @@ function gpullB {
 # Проверка изменений git
 # alias gcheck="gCheck '/home/bitrix/ext_www/site.info' 'site.info' && gCheck '/home/bitrix/kernel/bitrix' 'kernel'"
 gCheck() {
-
     path=$1
     name=$2
 
     echo -e "check ${_BRed}$name${_Norm}"
     cd $path
     gitStatus=$(git status -s>/dev/null)
-    # branchName=$(git status 2>/dev/null | head -n1 | cut -d" " -f4)
-    # gitStatusN2=$(${gitStatus}>/dev/null | head -n2)
-    #
-    # в ковычках указываем имена переменных для сравнения. -eq - логическое сравнение обозначающие "равны"
+
     if [[ "$gitStatus" -eq '' ]]
     then
         echo -e " ${_Green}Изменений не найдено${_Norm}"
