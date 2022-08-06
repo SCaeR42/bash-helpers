@@ -59,13 +59,16 @@ gCheck() {
 
     echo -e "check ${_BRed}$name${_Norm}"
     cd $path
-    gitStatus=$(git status -s>/dev/null)
+    gitStatus=$(git status -s)
 
-    if [[ "$gitStatus" -eq '' ]]
+    gitStatusLines=$(git status -s | wc -l)
+
+
+    if [[ "$gitStatusLines" -lt 1 ]]
     then
         echo -e " ${_Green}Изменений не найдено${_Norm}"
     else
-        echo $gitStatus
+        echo "$gitStatus"
     fi
 
     echo '============='
