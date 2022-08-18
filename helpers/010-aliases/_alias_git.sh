@@ -68,7 +68,7 @@ gCheck() {
     then
         echo -e " ${_Green}Изменений не найдено${_Norm}"
     else
-        echo "$gitStatus"
+        echo -e "${_Red}$gitStatus${_Norm}"
     fi
 
     echo '============='
