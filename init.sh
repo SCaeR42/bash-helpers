@@ -4,6 +4,25 @@
 DIRSCRIPT=$(cd $(dirname $0) && pwd)
 DEST_HELPER_DIR='.helpers'
 DEST_DOTFILES_DIR='.dotfiles'
+FILLDESTDIR="/opt/$DEST_HELPER_DIR";
+
+#create .helpers dir in user bash_profile
+if [ ! -d ~/$FILLDESTDIR ]; then
+    mkdir $FILLDESTDIR;
+    echo $FILLDESTDIR "create dir";
+else
+    echo $FILLDESTDIR "found dir";
+fi
+
+chmod -R 777 $FILLDESTDIR;
+
+if [ ! -L ~/$DEST_HELPER_DIR ]; then
+    ln -s $FILLDESTDIR ~/$DEST_HELPER_DIR;
+    echo ~/$DEST_HELPER_DIR "create link";
+else
+    echo ~/$DEST_HELPER_DIR "found link";
+fi
+
 
 #remotes
 # REMOTE_BUNDLE_DIR='https://raw.githubusercontent.com/spacecoding42/bash-helpers/master'

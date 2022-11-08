@@ -1,4 +1,5 @@
 # Bash helpers
+
 ## Structure
 
 - dotfiles - configs
@@ -8,21 +9,25 @@
 - builder all helpers to bundle file
 
 ## Enable All-In-One file
-### Automatic enable
-````bash
-git clone https://github.com/SCaeR42/bash-helpers.git && cd ./bash-helpers && chmod 777 ./init.sh && ./init.sh && rm -fr ../bash-helpers
-````
 
-####
+### Automatic enable
+
+```bash
+git clone https://github.com/SCaeR42/bash-helpers.git && cd ./bash-helpers && chmod 777 ./init.sh && ./init.sh && rm -fr ../bash-helpers
+```
+
+#### 
+
 option init.sh `-dotfiles` added dotfiles to `~/.dotfiles/` and create symlinks for root user
 
 ### Automatic enable whis dotfiles
+
 ````bash
 git clone https://github.com/SCaeR42/bash-helpers.git && cd ./bash-helpers && chmod 777 ./init.sh && ./init.sh -dotfiles && rm -fr ../bash-helpers
 ````
 
-
 ### Manual enable
+
 Copy `.helpers` folder to profile and add to .bash_profile
 
 ````bash
@@ -45,10 +50,12 @@ alias ??='bhlp'
 ??
 ````
 
-
 ## Enable all files RAW
+
 ### Manual enable
+
 add to .bash_profile
+
 ````bash
 if [ -f ~/bash_helpers/helpers/.bash_helpers.sh ]; then
 	. ~/bash_helpers/helpers/.bash_helpers.sh
@@ -83,19 +90,15 @@ done
 ```
 
 ## Build All-In-One bundle file
+
 ````bash
 bash build.sh
 ````
+
 This command combine all files in helpers directory to one bundle file
 
 ## Temporarily enable all helpers only on current session
+
 ````bash
 git clone https://github.com/SCaeR42/bash-helpers.git && cd ./bash-helpers && chmod 777 ./init.sh && ./init.sh -lite && . ./.helpers/bash_helpers_bundle.sh && . ./.helpers/local_aliases.sh && rm -fr ../bash-helpers && cd ~/
 ````
-
-
-
-
-    
-
-
