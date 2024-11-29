@@ -166,3 +166,26 @@ function allcrontab() {
     done
 }
 ## /Все задачи CRON всех пользователей
+
+## MySQL or MariyaDB
+
+function sqlType() {
+    # Проверка на наличие MySQL
+    if command -v mysql &> /dev/null; then
+        # Получаем версию MySQL или MariaDB
+        version=$(mysql --version)
+        
+        # Проверяем, что это MariaDB или MySQL
+        if echo "$version" | grep -i "mariadb" &> /dev/null; then
+            echo "Установлена MariaDB. Версия: $version"
+        elif echo "$version" | grep -i "mysql" &> /dev/null; then
+            echo "Установлен MySQL. Версия: $version"
+        else
+            echo "Не удалось определить тип базы данных. Версия: $version"
+        fi
+    else
+        echo "MySQL или MariaDB не установлены."
+    fi
+}
+
+

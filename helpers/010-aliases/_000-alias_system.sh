@@ -60,4 +60,8 @@ alias sst='systemctl stop'
 alias se='systemctl enable'
 alias sd='systemctl disable'
 
+#editor
+alias nano='nano --mouse'
+
+
 
