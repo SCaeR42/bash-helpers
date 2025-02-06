@@ -25,7 +25,7 @@ fi
 
 
 #remotes
-# REMOTE_BUNDLE_DIR='https://raw.githubusercontent.com/spacecoding42/bash-helpers/master'
+# REMOTE_BUNDLE_DIR='https://raw.githubusercontent.com/SCaeR42/bash-helpers/master'
 # REMOTE_DIR_DIST=$REMOTE_BUNDLE_DIR/'.helpers'
 FILE_BUNDLE='bash_helpers_bundle.sh'
 FILE_LOCAL='local_aliases.sh'
@@ -78,8 +78,6 @@ if [ "$ADD_DOTFILES" == true ]; then
 fi
 
 
-
-
 chmod 777 ./build.sh;
 ./build.sh;
 
@@ -87,6 +85,8 @@ if [ "$VARIANT_ADD" == "LITE" ]; then
 
 echo 'source ' $DIRSCRIPT/$DEST_HELPER_DIR/$FILE_BUNDLE
 echo 'source ' $DIRSCRIPT/$DEST_HELPER_DIR/$FILE_LOCAL
+
+rm -fr ../bash-helpers
 
 exit 0;
 fi
@@ -149,17 +149,22 @@ else
 cat >> ~/.bash_profile << \EOF
 ##### BASH HELPERS #####
 bhlp() {
-# If not running interactively, don't do anything
-case $- in
-    *i*) ;;
-      *) return;;
-esac
+  # If not running interactively, don't do anything
+  case $- in
+      *i*) ;;
+        *) return;;
+  esac
 
-for script in ~/.helpers/*.sh ; do
-    if [ -f $script ] ; then
-        . $script
-    fi
-done
+  for script in ~/.helpers/*.sh ; do
+      # Пропустить файл, если его имя содержит "cron_"
+      if [[ "$script" == *cron_* ]]; then
+          continue
+      fi
+
+      if [ -f "$script" ]; then
+          . "$script"
+      fi
+  done
 }
 
 alias ??='bhlp'
@@ -188,6 +193,12 @@ fi
 # done
 
 
-#applying changes
-source ~/.bash_profile
+echo "Deleted tep files...";
+rm -fr ../bash_helpers
 
+cd ~
+
+echo "Reload...";
+#applying changes
+#source ~/.bash_profile
+exec ${SHELL} -l

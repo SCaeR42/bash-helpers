@@ -3,17 +3,20 @@
 ## Structure
 
 - dotfiles - configs
-- helpers - support heplers and aliases
+- helpers - support helpers and aliases
+- The script is installed in the `.helpers` directory
+- Script for running by `cron` `cron_helpers`
 - local alias
 - enable variants auto/manual
 - builder all helpers to bundle file
+
 
 ## Enable All-In-One file
 
 ### Automatic enable
 
 ```bash
-git clone https://github.com/SCaeR42/bash-helpers.git && cd ./bash-helpers && chmod 777 ./init.sh && ./init.sh && rm -fr ../bash-helpers
+git clone https://github.com/SCaeR42/bash-helpers.git && cd ./bash-helpers && chmod 777 ./init.sh && ./init.sh
 ```
 
 #### 
@@ -23,7 +26,7 @@ option init.sh `-dotfiles` added dotfiles to `~/.dotfiles/` and create symlinks 
 ### Automatic enable whis dotfiles
 
 ````bash
-git clone https://github.com/SCaeR42/bash-helpers.git && cd ./bash-helpers && chmod 777 ./init.sh && ./init.sh -dotfiles && rm -fr ../bash-helpers
+git clone https://github.com/SCaeR42/bash-helpers.git && cd ./bash-helpers && chmod 777 ./init.sh && ./init.sh -dotfiles
 ````
 
 ### Manual enable
@@ -72,20 +75,10 @@ case $- in
       *) return;;
 esac
 
-for dir in ~/bash_helpers/helpers/* ; do
-    if [ -d $dir ] ; then
-        for script in $dir/*.sh ; do
-            if [ -f $script ] ; then
-                    . $script
-            fi
-        done
+for script in ~/.helpers/*.sh ; do
+    if [ -f $script ] ; then
+        . $script
     fi
-done
-
-for script in ~/bash_helpers/local/* ; do
-        if [ -f $script ] ; then
-                . $script
-        fi
 done
 ```
 
@@ -102,3 +95,9 @@ This command combine all files in helpers directory to one bundle file
 ````bash
 git clone https://github.com/SCaeR42/bash-helpers.git && cd ./bash-helpers && chmod 777 ./init.sh && ./init.sh -lite && . ./.helpers/bash_helpers_bundle.sh && . ./.helpers/local_aliases.sh && rm -fr ../bash-helpers && cd ~/
 ````
+
+## Squares in the package
+
+- restart_process_if_long_running.sh - automatic restart of long processes
+  cron_restart_process_if_long_running.sh - File for installation `cron`
+

@@ -51,6 +51,7 @@ alias ahc='echo -n >~/.bash_history && echo -n >~/.bash_history && history -c -w
 
 # CentOS
 alias yumi='yum install -y'
+alias dnfi='dnf install -y'
 
 #systemctl
 alias ss='systemctl status'
