@@ -194,7 +194,7 @@ fi
 
 
 echo "Deleted tep files...";
-rm -fr ../bash_helpers
+rm -fr ../bash-helpers
 
 cd ~
 
