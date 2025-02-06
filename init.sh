@@ -115,6 +115,7 @@ fi
 # else
 
 cp $DIRSCRIPT/$DEST_HELPER_DIR/$FILE_BUNDLE  ~/$DEST_HELPER_DIR/000-$FILE_BUNDLE
+cp -r $DIRSCRIPT/$DEST_HELPER_DIR/cron_helpers  ~/$DEST_HELPER_DIR/
 
 #copy file if not exist
 if [ ! -f ~/$DEST_HELPER_DIR/$FILE_LOCAL ]; then
@@ -122,6 +123,12 @@ if [ ! -f ~/$DEST_HELPER_DIR/$FILE_LOCAL ]; then
 fi
 # fi
 
+# Копируем все файлы, кроме local_aliases.sh
+for file in $DIRSCRIPT/$DEST_HELPER_DIR/*; do
+  if [[ "$(basename "$file")" != "local_aliases.sh" && "$(basename "$file")" != "bash_helpers_bundle.sh" ]]; then
+      cp "$file" ~/$DEST_HELPER_DIR
+    fi
+done
 
 #create bash_profile in not exist
 if [ ! -f ~/.bash_profile ]; then
