@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. /opt/.helpers/cron_helpers/restart_process_if_long_running.sh
+. /opt/.helpers/restart_process_if_long_running.sh
 
 restart_process_if_long_running "mysqld" "mysqld" 86400
 restart_process_if_long_running "systemd-journald" "systemd-journald" 86400
