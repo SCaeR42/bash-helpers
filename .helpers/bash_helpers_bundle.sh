@@ -1,4 +1,8 @@
 #!/bin/bash
+# ВНИМАНИЕ: файл сгенерирован build.sh — не редактировать вручную
+# 2026-10-11 13:34:50
+
+# ───────── helpers/000-main/_colors.sh ─────────
 # colors
 #Памятка, Таблица цветов и фонов
 #Цвет           код       код фона
@@ -114,7 +118,7 @@ _On_IPurple='\e[0;105m'  # Purple
 _On_ICyan='\e[0;106m'    # Cyan
 _On_IWhite='\e[0;107m'   # White
 
-#!/bin/bash
+# ───────── helpers/000-main/_export.sh ─────────
 # export
 export PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 
@@ -126,8 +130,11 @@ export SSH="$HOME/.ssh"
 
 export EDITOR=nano
 
+# маны на русском
+export MANOPT="-L ru"
 
-#!/bin/bash
+
+# ───────── helpers/000-main/_functions.sh ─────────
 # functions
 ###############################################################################
 # HELP FUNCTIONS
@@ -154,41 +161,43 @@ function _error() {
 
 # os type
 function _getDistName() {
-    if grep -Eqi "CentOS" /etc/issue || grep -Eq "CentOS" /etc/*-release; then
-        DISTRO='CentOS'
-        PM='yum'
-    elif grep -Eqi "Red Hat Enterprise Linux" /etc/issue || grep -Eq "Red Hat Enterprise Linux" /etc/*-release; then
-        DISTRO='RHEL'
-        PM='yum'
-    elif grep -Eqi "Aliyun" /etc/issue || grep -Eq "Aliyun" /etc/*-release; then
-        DISTRO='Aliyun'
-        PM='yum'
-    elif grep -Eqi "Fedora" /etc/issue || grep -Eq "Fedora" /etc/*-release; then
-        DISTRO='Fedora'
-        PM='yum'
-    elif grep -Eqi "Amazon Linux" /etc/issue || grep -Eq "Amazon Linux" /etc/*-release; then
-        DISTRO='Amazon'
-        PM='yum'
-    elif grep -Eqi "Debian" /etc/issue || grep -Eq "Debian" /etc/*-release; then
-        DISTRO='Debian'
-        PM='apt'
-    elif grep -Eqi "Ubuntu" /etc/issue || grep -Eq "Ubuntu" /etc/*-release; then
-        DISTRO='Ubuntu'
-        PM='apt'
-    elif grep -Eqi "Raspbian" /etc/issue || grep -Eq "Raspbian" /etc/*-release; then
-        DISTRO='Raspbian'
-        PM='apt'
-    elif grep -Eqi "Deepin" /etc/issue || grep -Eq "Deepin" /etc/*-release; then
-        DISTRO='Deepin'
-        PM='apt'
-    elif grep -Eqi "Mint" /etc/issue || grep -Eq "Mint" /etc/*-release; then
-        DISTRO='Mint'
-        PM='apt'
-    elif grep -Eqi "Kali" /etc/issue || grep -Eq "Kali" /etc/*-release; then
-        DISTRO='Kali'
-        PM='apt'
-    else
-        DISTRO='unknow'
+    if [ -f /etc/issue ]; then
+        if grep -Eqi "CentOS" /etc/issue || grep -Eq "CentOS" /etc/*-release; then
+            DISTRO='CentOS'
+            PM='yum'
+        elif grep -Eqi "Red Hat Enterprise Linux" /etc/issue || grep -Eq "Red Hat Enterprise Linux" /etc/*-release; then
+            DISTRO='RHEL'
+            PM='yum'
+        elif grep -Eqi "Aliyun" /etc/issue || grep -Eq "Aliyun" /etc/*-release; then
+            DISTRO='Aliyun'
+            PM='yum'
+        elif grep -Eqi "Fedora" /etc/issue || grep -Eq "Fedora" /etc/*-release; then
+            DISTRO='Fedora'
+            PM='yum'
+        elif grep -Eqi "Amazon Linux" /etc/issue || grep -Eq "Amazon Linux" /etc/*-release; then
+            DISTRO='Amazon'
+            PM='yum'
+        elif grep -Eqi "Debian" /etc/issue || grep -Eq "Debian" /etc/*-release; then
+            DISTRO='Debian'
+            PM='apt'
+        elif grep -Eqi "Ubuntu" /etc/issue || grep -Eq "Ubuntu" /etc/*-release; then
+            DISTRO='Ubuntu'
+            PM='apt'
+        elif grep -Eqi "Raspbian" /etc/issue || grep -Eq "Raspbian" /etc/*-release; then
+            DISTRO='Raspbian'
+            PM='apt'
+        elif grep -Eqi "Deepin" /etc/issue || grep -Eq "Deepin" /etc/*-release; then
+            DISTRO='Deepin'
+            PM='apt'
+        elif grep -Eqi "Mint" /etc/issue || grep -Eq "Mint" /etc/*-release; then
+            DISTRO='Mint'
+            PM='apt'
+        elif grep -Eqi "Kali" /etc/issue || grep -Eq "Kali" /etc/*-release; then
+            DISTRO='Kali'
+            PM='apt'
+        else
+            DISTRO='unknow'
+        fi
     fi
 }
 _getDistName
@@ -294,7 +303,30 @@ function allcrontab() {
 }
 ## /Все задачи CRON всех пользователей
 
-#!/bin/bash
+## MySQL or MariyaDB
+
+function sqlType() {
+    # Проверка на наличие MySQL
+    if command -v mysql &> /dev/null; then
+        # Получаем версию MySQL или MariaDB
+        version=$(mysql --version)
+        
+        # Проверяем, что это MariaDB или MySQL
+        if echo "$version" | grep -i "mariadb" &> /dev/null; then
+            echo "Установлена MariaDB. Версия: $version"
+        elif echo "$version" | grep -i "mysql" &> /dev/null; then
+            echo "Установлен MySQL. Версия: $version"
+        else
+            echo "Не удалось определить тип базы данных. Версия: $version"
+        fi
+    else
+        echo "MySQL или MariaDB не установлены."
+    fi
+}
+
+
+
+# ───────── helpers/010-aliases/_000-alias_system.sh ─────────
 # aliases system
 alias rm='rm -i'
 alias cp='cp -i'
@@ -328,7 +360,7 @@ alias lu='ls -lur'              # сортировка по времени по�
 alias lr='ls -lR'               # рекурсивный обход подкаталогов
 alias lt='ls -ltr'              # сортировка по дате
 alias lm='ls -al |more'         # вывод через 'more'
-alias tree='tree -Csu'          # альтернатива 'ls'
+alias tree='tree -C'          # альтернатива 'ls'
 
 ## Colorize the grep command output for ease of use (good for log files)##
 alias grep='grep --color=auto'
@@ -347,6 +379,7 @@ alias ahc='echo -n >~/.bash_history && echo -n >~/.bash_history && history -c -w
 
 # CentOS
 alias yumi='yum install -y'
+alias dnfi='dnf install -y'
 
 #systemctl
 alias ss='systemctl status'
@@ -356,15 +389,19 @@ alias sst='systemctl stop'
 alias se='systemctl enable'
 alias sd='systemctl disable'
 
+#editor
+alias nano='nano --mouse'
 
 
-#!/bin/bash
+
+
+# ───────── helpers/010-aliases/_alias_bitrix.sh ─────────
 
 #bitrix VM
 alias bx='~/menu.sh'
 
 
-#!/bin/bash
+# ───────── helpers/010-aliases/_alias_git.sh ─────────
 #git
 alias gb="git branch"
 alias gc="git commit"
@@ -381,6 +418,7 @@ alias gl='git log'
 alias gpush='git push'
 alias gpull='git pull'
 alias gr='git remote'
+alias gll="git log --graph --pretty=format:'%Cred%h%Creset -%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative -30"
 
 alias gi='echo "
 gb		-	git branch
@@ -395,17 +433,59 @@ gcm		-	git commit --amend
 gu		-	git config user.name; git config user.email
 gl		-	git log
 gpush		-	git push
+gpushnew		-	git push --set-upstream origin
 gpull		-	git pull
-gr		-	git remote"
+gr		-	git remote
+gll		-	git log graph + colored last 30"
 '
 
-#!/bin/bash
+# Получение новой удалённой ветки с доп. действиями
+function gpullB {
+    if [ $# -eq 0 ] || [ $# -gt 2 ]
+    then
+        read -p "Enter a branch name: " newBranchName
+    else
+        newBranchName=$1
+    fi
+
+    git checkout -b $newBranchName origin/$newBranchName
+
+    echo "Getting new branch" $value
+    git branch
+}
+
+# Проверка изменений git
+# alias gcheck="gCheck '/home/bitrix/ext_www/site.info' 'site.info' && gCheck '/home/bitrix/kernel/bitrix' 'kernel'"
+gCheck() {
+    path=$1
+    name=$2
+
+    echo -e "check ${_BRed}$name${_Norm}"
+    cd $path
+    gitStatus=$(git status -s)
+
+    gitStatusLines=$(git status -s | wc -l)
+
+
+    if [[ "$gitStatusLines" -lt 1 ]]
+    then
+        echo -e " ${_Green}Изменений не найдено${_Norm}"
+    else
+        echo -e "${_Red}$gitStatus${_Norm}"
+    fi
+
+    echo '============='
+}
+
+
+
+# ───────── helpers/010-aliases/_alias_laravel.sh ─────────
 #laravel
 alias lvl='php artisan $1'
 alias lvllist='lvl list'
 alias lvlclear='lvl cache:clear | lvl debugbar:clear | lvl view::clear'
 
-#!/bin/bash
+# ───────── helpers/020-customize/_000-welcome_screen.sh ─────────
 echo -e "${_Cyan}Open shell help info ${_Yellow}?${_Norm}";
 
 

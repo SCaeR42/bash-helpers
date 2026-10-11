@@ -1,51 +1,50 @@
-# Bash helpers
+# Помощники Bash
 
-## Structure
+## Структура
 
 - dotfiles - configs
-- helpers - support helpers and aliases
-- The script is installed in the `.helpers` directory
-- Script for running by `cron` `cron_helpers`
-- local alias
-- enable variants auto/manual
-- builder all helpers to bundle file
+- helpers - поддержка помощников и псевдонимов
+- Скрипт устанавливается в каталог `.helpers`
+- Скрипт для запуска `cron` `cron_helpers`
+- локальный псевдоним
+- включить варианты auto/manual
+- собрать все помощники в файл пакета
 
+## Включить файл All-In-One
 
-## Enable All-In-One file
-
-### Automatic enable
+### Автоматическое включение
 
 ```bash
 git clone https://github.com/SCaeR42/bash-helpers.git && cd ./bash-helpers && chmod 777 ./init.sh && ./init.sh
 ```
 
-#### 
+####
 
-option init.sh `-dotfiles` added dotfiles to `~/.dotfiles/` and create symlinks for root user
+Опция init.sh `-dotfiles` добавил dotfiles в `~/.dotfiles/` и создст символические ссылки для пользователя
 
-### Automatic enable whis dotfiles
+### Автоматическое включение с dotfiles
 
 ````bash
 git clone https://github.com/SCaeR42/bash-helpers.git && cd ./bash-helpers && chmod 777 ./init.sh && ./init.sh -dotfiles
 ````
 
-### Manual enable
+### Ручное включение
 
-Copy `.helpers` folder to profile and add to .bash_profile
+Скопировать папку `.helpers` в профиль и добавить в .bash_profile
 
 ````bash
-##### BASH HELPERS #####
+##### ПОМОЩНИКИ BASH #####
 bhlp() {
-# If not running interactively, don't do anything
+# Если не запущено в интерактивном режиме, ничего не делать
 case $- in
-    *i*) ;;
-      *) return;;
+*i*) ;;
+*) return;;
 esac
 
 for script in ~/.helpers/*.sh ; do
-    if [ -f $script ] ; then
-        . $script
-    fi
+if [ -f $script ] ; then
+. $script
+fi
 done
 }
 
@@ -53,26 +52,26 @@ alias ??='bhlp'
 ??
 ````
 
-## Enable all files RAW
+## Включить все файлы RAW
 
-### Manual enable
+### Включить вручную
 
-add to .bash_profile
+добавить в .bash_profile
 
 ````bash
 if [ -f ~/bash_helpers/helpers/.bash_helpers.sh ]; then
-	. ~/bash_helpers/helpers/.bash_helpers.sh
+. ~/bash_helpers/helpers/.bash_helpers.sh
 fi
 ````
 
-OR
+ИЛИ
 
 ```bash
 
-# If not running interactively, don't do anything
+# Если не запущено в интерактивном режиме, ничего не делать
 case $- in
-    *i*) ;;
-      *) return;;
+*i*) ;;
+*) return;;
 esac
 
 for script in ~/.helpers/*.sh ; do
@@ -82,22 +81,22 @@ for script in ~/.helpers/*.sh ; do
 done
 ```
 
-## Build All-In-One bundle file
+## Сборка файла пакета All-In-One
 
 ````bash
 bash build.sh
 ````
 
-This command combine all files in helpers directory to one bundle file
+Эта команда объединяет все файлы в каталоге helpers в один файл пакета
 
-## Temporarily enable all helpers only on current session
+## Временно включает все помощники только в текущем сеансе
 
 ````bash
 git clone https://github.com/SCaeR42/bash-helpers.git && cd ./bash-helpers && chmod 777 ./init.sh && ./init.sh -lite && . ./.helpers/bash_helpers_bundle.sh && . ./.helpers/local_aliases.sh && rm -fr ../bash-helpers && cd ~/
 ````
 
-## Squares in the package
+## Скрипты в пакете
 
-- restart_process_if_long_running.sh - automatic restart of long processes
-  cron_restart_process_if_long_running.sh - File for installation `cron`
+- restart_process_if_long_running.sh - Автоматический перезапуск долгих процессов
+  cron_restart_process_if_long_running.sh - файл для установки `cron` 
 

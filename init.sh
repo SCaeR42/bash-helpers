@@ -1,26 +1,31 @@
 #!/bin/bash
 
 ## current dir
-DIRSCRIPT=$(cd $(dirname $0) && pwd)
+DIRSCRIPT=$(cd "$(dirname "$0")" && pwd)
 DEST_HELPER_DIR='.helpers'
 DEST_DOTFILES_DIR='.dotfiles'
-FILLDESTDIR="/opt/$DEST_HELPER_DIR";
+OPT_HELPER_DIR="/opt/$DEST_HELPER_DIR"
 
-#create .helpers dir in user bash_profile
-if [ ! -d ~/$FILLDESTDIR ]; then
-    mkdir $FILLDESTDIR;
-    echo $FILLDESTDIR "create dir";
+# Выбор места установки:
+#  - root и /opt доступна для записи -> ставим в /opt/.helpers + симлинк ~/.helpers
+#  - иначе (не root / нет доступа к /opt) -> ставим прямо в ~/.helpers
+if [ "$(id -u)" -eq 0 ] && mkdir -p "$OPT_HELPER_DIR" 2>/dev/null; then
+    echo "$OPT_HELPER_DIR" "ready dir";
+    chmod -R 777 "$OPT_HELPER_DIR";
+
+    # симлинк ~/.helpers -> /opt/.helpers
+    if [ -L ~/"$DEST_HELPER_DIR" ]; then
+        echo ~/"$DEST_HELPER_DIR" "found link";
+    elif [ -d ~/"$DEST_HELPER_DIR" ]; then
+        echo ~/"$DEST_HELPER_DIR" "found real dir, skip symlink";
+    else
+        ln -s "$OPT_HELPER_DIR" ~/"$DEST_HELPER_DIR";
+        echo ~/"$DEST_HELPER_DIR" "create link";
+    fi
 else
-    echo $FILLDESTDIR "found dir";
-fi
-
-chmod -R 777 $FILLDESTDIR;
-
-if [ ! -L ~/$DEST_HELPER_DIR ]; then
-    ln -s $FILLDESTDIR ~/$DEST_HELPER_DIR;
-    echo ~/$DEST_HELPER_DIR "create link";
-else
-    echo ~/$DEST_HELPER_DIR "found link";
+    # Непривилегированная установка: реальный каталог в домашней директории
+    mkdir -p ~/"$DEST_HELPER_DIR";
+    echo ~/"$DEST_HELPER_DIR" "install into home (non-root)";
 fi
 
 

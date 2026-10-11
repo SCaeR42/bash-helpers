@@ -32,7 +32,7 @@ gl		-	git log
 gpush		-	git push
 gpushnew		-	git push --set-upstream origin
 gpull		-	git pull
-gr		-	git remote"
+gr		-	git remote
 gll		-	git log graph + colored last 30"
 '
 
